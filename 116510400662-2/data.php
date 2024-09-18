@@ -10,9 +10,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $state = $_POST["province"];
     $zip = $_POST["zipcode"];
     $Phone_num = $_POST["TELEPHONE"];
-    
+
+    # insert for mySql
+    $mysqli = new mysqli('localhost', 'root', '', 'information-form_hw-8');
+    if ($mysqli->connect_errno) {
+        echo "Failed to connect to Database: " . $mysqli->connect_error;
+        exit();
+    }
+    $sql = "INSERT INTO person (`firstname`, `lastname`,  `date`	, `rank`	, `district`	, `city`	, `state` , `zip` , `Phone_num`) 
+   VALUES ('$name','$surname','$date', '$rank', '$district' , '$city', '$state', '$zip', '$Phone_num')";
+
+    if ($mysqli->query($sql) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $mysqli->error;
+    }
+    $mysqli->close();
+
     echo "<h2>ชื่อ<br></h2>";
-    echo" <h3> $rank$name   $surname</h3>";
+    echo " <h3> $rank$name   $surname</h3>";
     echo "<h2>วัน เดือน ปีเกิด<br></h2>";
     echo "<h3>$date</h3>";
     echo "<h2>ที่อยู่</h2>";

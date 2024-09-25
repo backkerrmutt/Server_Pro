@@ -40,4 +40,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     echo "<h3>$Phone_num</h3>";
 }
 ?>
+
 <link rel="stylesheet" href="page_2.css">

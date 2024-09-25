@@ -12,3 +12,4 @@ CREATE TABLE users (
     province VARCHAR(50),
     email VARCHAR(100) UNIQUE
 );
+ 
